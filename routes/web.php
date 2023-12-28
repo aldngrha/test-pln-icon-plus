@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource("unitPln", \App\Http\Controllers\UnitPLNController::class);
+Route::resource("meetingRoom", \App\Http\Controllers\MeetingRoomController::class);

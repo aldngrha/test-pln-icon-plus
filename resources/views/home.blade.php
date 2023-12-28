@@ -14,7 +14,7 @@
                     <a class="nav-link" href="{{ route("unitPln.index") }}">Unit PLN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Meeting Room</a>
+                    <a class="nav-link" href="{{ route("meetingRoom.index") }}">Meeting Room</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Order Management</a>
