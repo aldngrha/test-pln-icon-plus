@@ -20,6 +20,12 @@
                     <a class="nav-link" href="#">Order Management</a>
                 </li>
             </ul>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
         </div>
     </nav>
     <div class="row justify-content-center">

@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\LandingPageController::class, "index"])->name("landing");
+
+Route::get("/order", [\App\Http\Controllers\OrderController::class, "index"])->name("order")->middleware(["auth", "employee"]);
+
+Route::prefix("superadmin")->namespace("superadmin")->middleware(["auth", "superadmin"])
+    ->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::resource("unitPln", \App\Http\Controllers\UnitPLNController::class);
+        Route::resource("meetingRoom", \App\Http\Controllers\MeetingRoomController::class);
+    });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource("unitPln", \App\Http\Controllers\UnitPLNController::class);
-Route::resource("meetingRoom", \App\Http\Controllers\MeetingRoomController::class);

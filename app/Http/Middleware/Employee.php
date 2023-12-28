@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class SuperAdmin
+class Employee
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,11 @@ class SuperAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->roles == "superadmin") {
+
+        if (Auth::user() && Auth::user()->roles == "employee") {
             return $next($request);
         }
 
-        return redirect("/dashboard");
+        return redirect("/order");
     }
 }

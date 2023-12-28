@@ -37,4 +37,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated($request, $user)
+    {
+        if ($user->role === 'superadmin') {
+            return redirect('/dashboard');
+        } else if ($user->role === 'admin'){
+            return redirect("/admin");
+        }
+
+        return redirect("/order"); // Ganti '/home' dengan halaman default yang diinginkan untuk role lainnya
+    }
 }
